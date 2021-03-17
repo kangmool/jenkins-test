@@ -19,15 +19,15 @@ pipeline {
             }
         }
         stage('main') {
-            when(branch 'main') {
-                steps {
-                    script {
-                        def target_hosts = get_target_hosts()
-                        for (TARGET_HOST in target_hosts) {
-                            echo "main - ${TARGET_HOST}"
-                        }
-                    }
-                }
+            when { branch 'main' }
+			steps {
+				script {
+					def target_hosts = get_target_hosts()
+					for (TARGET_HOST in target_hosts) {
+						echo "main - ${TARGET_HOST}"
+					}
+				}
+			}
             }
         }
     }
