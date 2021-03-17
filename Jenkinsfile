@@ -27,7 +27,6 @@ pipeline {
 						echo "main - ${TARGET_HOST}"
 					}
 				}
-			}
             }
         }
     }
