@@ -32,24 +32,35 @@ pipeline {
         stage('staging') {
             when { branch 'staging' }
             steps {
-	        script {
-		    def target_hosts = get_target_hosts()
-		    for (TARGET_HOST in target_hosts) {
-		        echo "staging - ${TARGET_HOST}"
-		    }
-		}
-	    }
+                script {
+                    def target_hosts = get_target_hosts()
+                    for (TARGET_HOST in target_hosts) {
+                        echo "staging - ${TARGET_HOST}"
+                    }
+                }
+            }
         }
         stage('dev') {
             when { branch 'dev' }
             steps {
-	        script {
-		    def target_hosts = get_target_hosts()
-		    for (TARGET_HOST in target_hosts) {
-		        echo "dev - ${TARGET_HOST}"
-		    }
-		}
-	    }
+                script {
+                    def target_hosts = get_target_hosts()
+                    for (TARGET_HOST in target_hosts) {
+                        echo "dev - ${TARGET_HOST}"
+                    }
+                }
+            }
+        }
+        stage('Deploy') {
+            when { tag 'v*' }
+            steps {
+                script {
+                    def target_hosts = get_target_hosts()
+                    for (TARGET_HOST in target_hosts) {
+                        echo "deploy - ${TARGET_HOST}"
+                    }
+                }
+            }
         }
     }
 }
