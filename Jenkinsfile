@@ -52,11 +52,6 @@ pipeline {
             }
         }
         stage('Deploy') {
-            when {
-	        expression {
-		    env.TAG_NAME != null && env.TAG_NAME.startsWith("v")
-		}
-            }
             steps {
                 script {
                     echo "branch: ${BRANCH_NAME}, tag: ${TAG_NAME}"
