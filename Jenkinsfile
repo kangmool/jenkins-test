@@ -8,7 +8,8 @@ pipeline {
             }
             steps {
                 echo "Hello World - ${env.TARGET_HOST}"
-                echo "branch: ${BRANCH_NAME}, tag: ${TAG_NAME}"
+                echo "branch: ${BRANCH_NAME}"
+                echo "tag: ${TAG_NAME}"
             }
         }
         stage('World') {
