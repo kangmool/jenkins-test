@@ -8,6 +8,7 @@ pipeline {
             }
             steps {
                 echo "Hello World - ${env.TARGET_HOST}"
+                echo "branch: ${BRANCH_NAME}, tag: ${TAG_NAME}"
             }
         }
         stage('World') {
@@ -54,8 +55,6 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    echo "branch: ${BRANCH_NAME}, tag: ${TAG_NAME}"
-
                     def target_hosts = get_target_hosts()
                     for (TARGET_HOST in target_hosts) {
                         echo "deploy - ${TARGET_HOST}"
